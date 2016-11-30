@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int judge(char * kirby, int first, int end, int tag) {
+    int sum = 0;
+    int cnt = 0;
+    for (int i = first; cnt < end; i += tag) {
+        if (kirby[i] == 'F'){
+            sum++;
+        }
+        else{//FFFFFFFFFFFFFFFFFFFFFFFFFFFWWWWFFFFWFWFFFFWFWFF
+            if (sum == 0){
+                return -1;
+            }
+            else{
+                sum /= 2;
+            }
+        }
+        cnt++;
+    }
+    return sum;
+}
+ 
+int main() {
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        int N, M;
+        scanf("%d %d", &N, &M);
+        char kirby[M + 1];
+        scanf("%s", kirby);
+        int a = judge(kirby, 0, M, 1);
+        int b = judge(kirby, M - 1, M, -1);
+        int fin = a > b ? a : b;
+        if (fin == -1){
+            printf("Dead\n");
+        }
+        else if (fin <= N){
+            printf("Fail\n");
+        }
+        else{
+            printf("Pass\n");
+        }
+    }
+    return 0;
+}
