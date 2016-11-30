@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<math.h>
+#define pi 3.14159
+ 
+int main(){
+    int n;
+    scanf("%d",&n);
+    while (n--){
+        int a,k;
+        scanf("%d %d",&a,&k);
+        int area = a * a;
+        double r = a / sqrt(2);
+        double now = pi / 4 * area;
+        double sum = now;
+        while (--k){
+            sum -= ((4 - pi) / 4) * (r * r);
+            r /= sqrt(2); 
+        }
+        printf("%.3f\n",sum);
+    }
+    return 0;
+}
