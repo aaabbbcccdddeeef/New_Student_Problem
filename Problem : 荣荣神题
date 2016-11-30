@@ -1,0 +1,17 @@
+#include<stdio.h>
+ 
+int main(){
+    long long int n;
+    scanf("%lld", &n);
+    while (n--) {
+        long long int t;
+        scanf("%lld", &t);
+        long long int should = 1;
+        while (should % t != 0){
+            printf("1");
+            should = should % t * 10 + 1;
+        }
+        printf("1\n");
+    }
+    return 0;
+}
