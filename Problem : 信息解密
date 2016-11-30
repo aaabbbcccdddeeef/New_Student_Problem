@@ -1,0 +1,21 @@
+#include<stdio.h>
+ 
+int main(){
+    char kirby[27] = {0};
+    scanf("%s",kirby);
+//  for (int i = 0;i < 26;i++){
+//      printf("%c",kirby[i]);
+//  }
+    getchar();
+    char n;
+    while ((n = getchar()) != EOF){
+        if (n == ' '){
+            printf("%c",n);
+        }else if (n <= 'Z'&&n >= 'A'){
+            printf("%c",kirby[n - 'A'] - 'a' + 'A');
+        }else if (n >= 'a'&&n <= 'z'){
+            printf("%c",kirby[n - 'a']);
+        }
+    }
+    return 0;
+}
