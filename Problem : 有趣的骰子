@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main() {
+    int T;
+    char kirby[6] = {0},kuiba[6] = {0};
+    scanf("%d", &T);
+    while (T--) {
+        int a, b;
+        scanf("%s %s", kirby, kuiba);
+        if (strcmp(kirby, "red") == 0) {
+            a = 0;
+        }else
+        if (strcmp(kirby, "black") == 0) {
+            a = 1;
+        }else{
+            a = 2;
+        }
+        if (strcmp(kuiba, "red") == 0) {
+            b = 0;
+        }else
+        if (strcmp(kuiba, "black") == 0) {
+            b = 1;
+        }else{
+            b = 2;
+        }
+        if (a == 0&&b == 2 || a == 1&&b == 0 || a == 2&& b == 1){
+            printf("1\n");
+        }else{
+            printf("2\n");
+        }
+    }
+    return 0;
+}
