@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main(){
+    char kirby[42] = {'0'}, zqd[42] = {'0'};
+    while (scanf("%s %s",&kirby[1],&zqd[1]) != EOF){
+        int a,b;
+        a = strlen(kirby);
+        b = strlen(zqd);
+        char *top,*low;
+        int min;
+        int max = a > b ? (top = kirby,low = zqd,min = b,a) : (top = zqd,low = kirby,min = a,b);
+        for (int i = min - 1;i > 0;i--){
+//          printf("%d\n",max);
+            top[max-- - 1] += low[i] - '0';
+            if (top[max] > '9'){
+                top[max] -= 10;
+                top[max - 1]++;
+            }
+        }
+        char *p;
+        p = top[0] == '0' ? &top[1] : top;
+        printf("%s\n",p);
+    }
+    return 0;
+}
