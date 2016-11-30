@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main(){
+    char kirby[102] = {0};
+    while (1){
+        scanf("%s",kirby);
+        if (strcmp("0",kirby) == 0){
+            break;
+        }
+        int len = strlen(kirby);
+        int temp = 0;
+        for (int i = 0;i < len;i++){
+            temp = temp * 10 + kirby[i] - '0';
+            temp %= 17;
+        }
+        if (temp){
+            printf("0\n");
+        }else{
+            printf("1\n");
+        }
+    }
+    return 0;
+}
