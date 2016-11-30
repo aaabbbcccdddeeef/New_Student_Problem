@@ -1,0 +1,17 @@
+#include<stdio.h>
+ 
+int main(){
+    int T;
+    scanf("%d", &T);
+    int kirby[40];
+    kirby[1] = kirby[0] = 1;
+    for (int i = 2;i < 40;i++){
+        kirby[i] = kirby[i - 1] + kirby[i - 2];
+    }
+    while (T--){
+        int n;
+        scanf("%d", &n);
+        printf("%d\n", kirby[n - 1]);
+    }
+    return 0;
+}
