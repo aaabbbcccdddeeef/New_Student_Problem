@@ -1,0 +1,54 @@
+#include<stdio.h>
+ 
+void Print(int a, int b){
+    int a1 = a, b1 = b;
+    int t;
+    while (a % b != 0){
+        t = b;
+        b = a % b;
+        a = t;
+    }
+    printf("%d/%d\n", a1 / b, b1 / b);
+}
+ 
+int main(){
+    int T;
+    scanf("%d", &T);
+    while (T--){
+        int n, m;
+        scanf("%d %d", &n, &m);
+        int a, b, t;
+        scanf("%d", &a);
+        for (int i = 0; i < n; i++){
+            scanf("%d", &t);
+        }
+        scanf("%d", &b);
+        for (int i = 0; i < m; i++){
+            scanf("%d", &t);
+        }
+        if (n > m) {
+            if (a * b > 0){
+                printf("Infinity\n");
+            }
+            else{
+                printf("-Infinity\n");
+            }
+        }
+        else if (n < m){
+            printf("0/1\n");
+        }
+        else{
+            if (a * b < 0){
+                printf("-");
+            }
+            if (b < 0){
+                b = -b;
+            }
+            if (a < 0){
+                a = -a;
+            }
+            Print(a, b);
+        }
+    }
+    return 0;
+}
