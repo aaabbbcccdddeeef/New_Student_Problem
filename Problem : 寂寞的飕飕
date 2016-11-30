@@ -1,0 +1,54 @@
+#include<stdio.h>//这题不科学...
+#include<stdlib.h>
+#define kriby kirby
+  
+int search(char ** kirby, int x1, int y1, int x2, int y2){
+    for (int i = x1; i <= x2; i++){
+        if (kriby[i][y1] == '*' || kriby[i][y2] == '*'){
+            return 0;
+        }
+    }
+//    for (int i = x1; i <= x2; i++){
+//        if (kriby[i][y2] == '*'){
+//            return 0;
+//        }
+//    }
+    for (int i = y1; i <= y2; i++){
+        if (kriby[x1][i] == '*' || kriby[x2][i] == '*'){
+            return 0;
+        }
+    }
+//    for (int i = y1; i <= y2; i++){
+//        if (kriby[x2][i] == '*'){
+//            return 0;
+//        }
+//    }
+    return 1;
+}
+  
+int main(){
+    int T;
+    scanf("%d", &T);
+    while (T--){
+        int n, m;
+        scanf("%d %d", &n ,&m);
+        char ** kirby;
+        kirby = (char**)malloc(n * sizeof(char*));
+        for (int i = 0; i < n; i++){
+            kirby[i] = (char*)malloc((m + 1) * sizeof(char));
+            scanf("%s", kirby[i]);
+        }
+        int k;
+        int x1, y1, x2, y2;
+        scanf("%d", &k);
+        while (k--){
+            scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+            if (search(kirby, x1 - 1, y1 - 1, x2 - 1, y2 - 1)){
+                printf("Yes.\n");
+            }else{
+                printf("No.\n");
+            }
+        }
+    }
+    return 0;
+}
