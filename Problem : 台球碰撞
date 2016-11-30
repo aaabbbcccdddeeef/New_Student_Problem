@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#define pi 3.1415926535897932
+#define deep 1e-7
+ 
+int main(int argc, char * argv[]) {
+    int L, W, x, y, R, a, v, s;
+    while (scanf("%d %d %d %d %d %d %d %d",&L, &W, &x, &y, &R, &a, &v, &s), L) {
+        L -= 2 * R, W -= 2 * R;
+        x -= R, y -= R;
+        double vx = v * (cos(a * pi / 180));
+        double vy = v * (sin(a * pi / 180));
+        double xs = vx * s, ys = vy * s;
+        xs += x;
+        ys += y;
+        xs = fabs(xs);
+        ys = fabs(ys);
+        double x1 = fmod(xs, 2 * L);
+        double y1 = fmod(ys, 2 * W);
+        if (x1 > L) {
+            x1 = 2 * L - x1;
+        }
+        if (y1 > W) {
+            y1 = 2 * W - y1;
+        }
+        x1 += R;
+        y1 += R;
+        printf("%.2f %.2f\n", x1, y1);
+    }
+    return 0;
+}
