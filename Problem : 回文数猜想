@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+ 
+int main(){
+    int n;
+    scanf("%d",&n);
+    while (n--){
+        char kirby[10000] = {0};
+        char zqy[37] = {0};
+        int cnt = 0;
+        int check;
+        scanf("%d",&check);
+        sprintf(zqy,"%d",check);
+        strcat(kirby,zqy);
+        int zqd = 0;
+        int t = check;
+        while (1){
+            while (t > 0){
+                zqd = zqd * 10 + t % 10;
+                t /= 10;
+            }
+            cnt++;
+            if (check == zqd){
+                printf("%d\n%s\n",--cnt,kirby);
+                break;
+            }else{
+                check += zqd;
+            }
+            sprintf(zqy,"--->%d",check);
+            strcat(kirby,zqy);
+            t = check;
+            zqd = 0;
+        }
+         
+    }
+    return 0;
+}
