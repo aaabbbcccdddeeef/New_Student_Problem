@@ -1,0 +1,34 @@
+#include<stdio.h>
+ 
+int main(){
+    long long int zqd = 10;
+    int kirby[1000] = {0};
+    int tag = 0;
+    while (zqd <= 10000000000){
+        for (int i = 10; i > 1; i--){
+            if (zqd % i == 0){
+                kirby[tag] = zqd / i;
+                tag++;
+            }
+        }
+        zqd *= 10;
+    }
+//  for (int i = 0;i < 1000; i++){
+//      printf("%d ", kirby[i]);
+//  }
+    int n, m;
+    while (scanf("%d %d", &n, &m) != EOF){
+        int t1, t2;
+        int i = 0;
+        for (i = 0; n > kirby[i]; i++){
+             
+        }
+        t1 = i;
+        for (; m >= kirby[i]; i++){
+             
+        }
+        t2 = i;
+        printf("%d\n", t2 - t1);
+    }
+    return 0;
+} 
