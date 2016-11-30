@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef long long LL;
+    
+int Cmn (int m, int n){
+    int sum = 1;
+    for (int i = 1; i <= n; ++i){
+        sum *= (m - i + 1);
+    }
+    for (int i = 1; i <= n; ++i){
+        sum /= i;
+    }
+    return sum;
+}
+    
+int main(){
+    int T;
+    scanf("%d", &T);
+    while (T--){
+        int N, t;
+        int kirby[2][2001] = {{0}, {0}};
+        scanf("%d", &N);
+        for (int i = 0; i < N; ++i){
+            scanf("%d", &t);
+            ++kirby[0][t];
+        }
+        for (int i = 1; i < 2001; ++i){
+            kirby[1][i] = kirby[0][i] + kirby[1][i - 1];
+        }
+        LL sum = 0;
+        for (int i = 1; i <= 1000; ++i){
+            if (kirby[0][i] == 0){
+                continue;
+            }
+            for (int j = i; j <= 1000; ++j){
+                if (kirby[0][j] == 0){
+                    continue;
+                }
+                 if( i == j  )
+                        {
+                            sum += kirby[0][i] * (kirby[0][i]-1) / 2 * (kirby[1][i+j-1] - kirby[1][j]  ) ;
+                            sum += kirby[0][i] * ( kirby[0][i] - 1 )*( kirby[0][i] - 2 ) / 6 ;
+                        }
+                        else
+                        {
+                            sum += kirby[0][i] * kirby[0][j] * ( kirby[1][i+j-1] - kirby[1][j] ) ;
+                            sum += kirby[0][j] * (kirby[0][j] - 1 ) / 2 * kirby[0][i] ;
+                        }
+            }
+        }
+        printf("%lld\n", sum);
+    }
+    return 0;
+}
