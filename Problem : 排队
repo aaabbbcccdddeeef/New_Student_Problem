@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main(){
+    int n;
+    int cnt = 0;
+    while (scanf("%d",&n) != EOF) { //EOF是end of file意思
+        if (cnt == 0){
+            printf("%d\n",n / 2);
+//            cnt = 1;
+        }else{
+            printf(" %d",n / 2);
+        }
+    }
+    return 0;
+}
