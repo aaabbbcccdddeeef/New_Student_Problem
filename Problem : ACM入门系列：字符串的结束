@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+ 
+int main(){
+    char kirby;
+    while ((kirby = getchar()) != EOF){
+        printf("%c",kirby);
+    }
+    return 0;
+}
