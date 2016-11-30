@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int kirby[21][21][21];
+int w(int a,int b,int c){
+    if (a <= 0||b <= 0||c <= 0){
+//      printf("here %d %d %d\n",a,b,c);
+        return 1;
+    }else
+    if (a > 20||b > 20||c > 20){
+//      printf("here %d %d %d\n",a,b,c);
+        return w(20,20,20);
+    }else
+    if (kirby[a][b][c] != -1){
+        return kirby[a][b][c];
+    } 
+    if (a < b&&b < c){
+//      printf("here %d %d %d\n",a,b,c);
+        return kirby[a][b][c] = w(a,b,c-1) + w(a,b-1,c-1) - w(a,b-1,c);
+    }else{
+//      printf("here %d %d %d\n",a,b,c);
+        return kirby[a][b][c] = w(a-1,b,c) + w(a-1,b-1,c) + w(a-1,b,c-1) - w(a-1,b-1,c-1);
+    }
+      
+}
+  
+int main(){
+    int a,b,c;
+    memset(kirby,-1,sizeof(kirby));
+    while (scanf("%d %d %d",&a,&b,&c),(a!=-1||b != -1||c != -1)){
+        printf("%d\n",w(a,b,c));
+    }
+    return 0;
+}
