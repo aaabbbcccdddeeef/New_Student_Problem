@@ -1,0 +1,76 @@
+#include<stdio.h>//似乎因为gets无法ac
+#include<stdlib.h>
+#include<string.h>
+  
+const char * kirby[10] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+  
+void zqd1(int sum){
+    int p;
+    p = sum % 10;
+    if (sum > 9){
+      sum /= 10;
+      zqd1(sum);
+      printf(" ");
+    }
+    printf("%s",kirby[p]);
+}
+int ssj(char zqd[],int len){
+    int sum = 0;
+    int tag = 0;
+    char temp[8] = {0};
+    for (int index = 0;index < len + 1;index++){
+        if (zqd[index] == ' '||zqd[index] == 0){
+            temp[tag] = 0;
+            for (int i = 0;i < 10;i++){
+                if (strcmp(temp,kirby[i]) == 0){
+                    sum = sum * 10 + i;
+                    break;
+                }
+            }
+            tag = 0;
+        }else{
+            temp[tag] = zqd[index];
+            tag++;
+        }
+    }
+    return sum;
+}
+  
+int main(){
+    int T;
+    scanf("%d\n",&T);
+//    getchar();
+    for (int i = 1;i <= T;i++){
+        char zqd[130] = {0};
+        char gr[130] = {0};
+        char n;
+        int o = 0;
+        while ((n = getchar()) != '\n'){
+            zqd[o] = n;
+            o++;
+        }
+        zqd[o] = 0;
+//      printf("%s\n",zqd);
+        o = 0;
+        while ((n = getchar()) != '\n'){
+            gr[o] = n;
+            o++;
+        } 
+        gr[o] = 0;
+//      printf("%s\n",gr);
+        printf("Case %d:\n",i);
+        if (zqd[0] <= '9'){
+            int sum;
+            sum = atoi(zqd) + atoi(gr);
+            zqd1(sum);
+            printf("\n");
+        }else{
+            int sum1 = 0,sum2 = 0;
+            int len1 = strlen(zqd),len2 = strlen(gr);
+            sum1 = ssj(zqd,len1);
+            sum2 = ssj(gr,len2);
+            printf("%d\n",sum1 + sum2);
+        }
+    }
+    return 0;
+}
