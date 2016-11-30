@@ -1,0 +1,25 @@
+#include<stdio.h>
+    int main(){
+        int N;
+        scanf("%d\n",&N);
+        for (int i = 0;i < N;i++){
+            int kirby[26] = {0};
+            char n;
+            int max = 0;
+            while ((n = getchar()) != '\n'){
+                if (n != ' '&&n != '~'){
+                    if (n - 'a' > max){
+                        max = n - 'a';
+                    }
+                    kirby[n - 'a']++;
+                }
+            }
+            printf("Case %d:\n",i+1);
+            for (int j = 0;j < 26;j++){
+                if (kirby[j]){
+                    printf("%c:%d%c",j + 'a',kirby[j],j == max?'\n':' ');
+                }
+            }
+        }
+        return 0;
+    }
