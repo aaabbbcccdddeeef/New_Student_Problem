@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+ 
+int find(int * set, int x, int y);
+ 
+int main(int argc, char * argv[]) {
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        int n, m;
+        scanf("%d %d", &n, &m);
+        int * set = (int*)malloc(n * sizeof(int));
+        memset(set, -1, n * sizeof(int));
+        int x, y;
+        int ans;
+        for (int i = 0; i < m; ++i) {
+            scanf("%d %d", &x, &y);
+            if (ans = find(set, x, y)) {
+                printf("%d\n", ans);
+            }
+            else {
+                printf("Invalid!\n");
+            }
+        }
+        free(set);
+    }
+    return 0;
+}
+int find(int * set, int x, int y) {
+    while (set[x] >= 0) x = set[x];
+    while (set[y] >= 0) y = set[y];
+    if (x == y) return 0;
+    if (set[x] < set[y]) {
+        set[x] += set[y];
+        set[y] = x;
+        return -set[x];
+    }
+    else {
+        set[y] += set[x];
+        set[x] = y;
+        return -set[y];
+    }
+}
