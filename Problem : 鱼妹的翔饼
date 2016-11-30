@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main(){
+    int T;
+    scanf("%d\n", &T);
+    while (T--){
+        int kirby[26] = {0};
+        char n;
+        while ((n = getchar()) != '\n'){
+            if (n >= 'a'){
+                kirby[n - 'a'] = 1;
+            }else{
+                kirby[n - 'A'] = 1;
+            }
+        }
+        int cnt = 0;
+        for (int i = 0;i < 26;i++){
+            if (kirby[i]){
+                cnt++;
+            }
+        }
+        printf("%d\n", cnt);
+    }
+    return 0;
+}
