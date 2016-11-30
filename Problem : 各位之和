@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main(){
+    char kirby[50] = {0};
+    while (1){
+        scanf("%s",kirby);
+        if (strcmp(kirby,"-1") == 0){
+            break;
+        }
+//      if (strcmp(kirby,"0") == 0){
+//          printf("0\n");
+//          continue;
+//      }
+        int sum = 0;
+        for (int i = 0;i < strlen(kirby);i++){
+            sum += kirby[i] - '0';
+        }
+        printf("%d\n",(sum - 1) % 9 + 1);
+    }
+    return 0;
+}
