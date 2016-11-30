@@ -1,0 +1,18 @@
+#include<stdio.h>
+ 
+int main(){
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        int n;
+        scanf("%d", &n);
+        int a = 2, b = 1;
+        while (--n) {
+            int t1 = a, t2 = b;
+            b = t2 + t1;
+            a = 2 * t2 + t1;
+        }
+        printf("%d\n", a + b);
+    }
+    return 0;
+}
