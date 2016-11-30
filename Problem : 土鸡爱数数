@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+ 
+int main(){
+    int T;
+    scanf("%d\n",&T);
+    while (T--){
+        int kirby[128] = {0};
+        char n;
+        while ((n = getchar()) != '\n'){
+            kirby[n]++;
+        }
+        int q;
+        scanf("%d\n",&q);
+        while (q--){
+            char a,b;
+            scanf("%c %c\n",&a,&b);
+            printf("%d\n",kirby[a] - kirby[b]);
+        }
+    }
+    return 0;
+}
