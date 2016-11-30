@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main(){
+    int T;
+    scanf("%d", &T);
+    while (T--){
+        int N;
+        scanf("%d", &N);
+        int kirby[N];
+        for (int i = 0; i < N; ++i){
+            scanf("%d", &kirby[i]);
+        }
+        int zqd[N];
+        int indexzqd = 0;
+        int indexzi = -1;
+        for (int i = 0; i < N; ++i){
+            scanf("%d", &zqd[i]);
+        }
+        int zi[N];
+        for (int i = 0; i < N; ++i){
+            zi[++indexzi] = kirby[i];
+            while (indexzi >= 0 && zi[indexzi] == zqd[indexzqd]){
+                --indexzi;
+                ++indexzqd;
+            }
+        }
+        if (indexzi == -1){
+            printf("Yes.\n");
+        }
+        else{
+            printf("No.\n");
+        }
+    }
+    return 0;
+}
